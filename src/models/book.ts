@@ -5,15 +5,15 @@ import sequelize from '../database';
 interface BookAttributes {
   id: number;
   name: string;
-  averageRating: number;
+  averageScore: number;
 }
 
-interface BookCreationAttributes extends Optional<BookAttributes, 'id' | 'averageRating'> {}
+interface BookCreationAttributes extends Optional<BookAttributes, 'id' | 'averageScore'> {}
 
 class Book extends Model<BookAttributes, BookCreationAttributes> implements BookAttributes {
   public id!: number;
   public name!: string;
-  public averageRating!: number;
+  public averageScore!: number;
 
   // timestamps!
   public readonly createdAt!: Date;
@@ -23,7 +23,7 @@ class Book extends Model<BookAttributes, BookCreationAttributes> implements Book
 Book.init({
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, allowNull: false },
-  averageRating: { type: DataTypes.FLOAT, defaultValue: 0 }
+  averageScore: { type: DataTypes.FLOAT, defaultValue: 0 }
 }, {
   sequelize,
   modelName: 'Book'

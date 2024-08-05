@@ -9,8 +9,8 @@ export const listBooks = async (req: Request, res: Response) => {
 };
 
 export const getBook = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const book = await Book.findByPk(id);
+  const { bookId } = req.params;
+  const book = await Book.findByPk(bookId);
   if (book) {
     res.json(book);
   } else {

@@ -1,10 +1,12 @@
-// src/routes/borrowRoutes.ts
 import { Router } from 'express';
 import { borrowBook, returnBook } from '../controllers/borrowController';
 
 const router = Router();
 
-router.post('/borrow', borrowBook);
-router.post('/return', returnBook);
+// Kitap ödünç alma isteği
+router.post('/:userId/borrow/:bookId', borrowBook);
+
+// Kitap iade etme isteği
+router.post('/:userId/return/:bookId', returnBook);
 
 export default router;

@@ -6,17 +6,17 @@ interface BorrowAttributes {
   id: number;
   userId: number;
   bookId: number;
-  rating?: number;
+  score?: number;
   returned: boolean;
 }
 
-interface BorrowCreationAttributes extends Optional<BorrowAttributes, 'id' | 'rating' | 'returned'> {}
+interface BorrowCreationAttributes extends Optional<BorrowAttributes, 'id' | 'score' | 'returned'> {}
 
 class Borrow extends Model<BorrowAttributes, BorrowCreationAttributes> implements BorrowAttributes {
   public id!: number;
   public userId!: number;
   public bookId!: number;
-  public rating!: number;
+  public score!: number;
   public returned!: boolean;
 
   // timestamps!
@@ -28,7 +28,7 @@ Borrow.init({
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   userId: { type: DataTypes.INTEGER, allowNull: false },
   bookId: { type: DataTypes.INTEGER, allowNull: false },
-  rating: { type: DataTypes.FLOAT, allowNull: true },
+  score: { type: DataTypes.FLOAT, allowNull: true },
   returned: { type: DataTypes.BOOLEAN, defaultValue: false }
 }, { 
   sequelize, 
